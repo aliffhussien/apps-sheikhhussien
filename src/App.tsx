@@ -9,16 +9,16 @@ export default function App() {
         {/* Landing page */}
         <Route path="/" element={<Landing />} />
 
-        {/* Norhan app - proxied to local server */}
-        <Route 
-          path="/norhan/*" 
+        {/* Norhan app - proxied to server */}
+        <Route
+          path="/norhan/*"
           element={
-            <iframe 
-              src="http://localhost:8888/" 
+            <iframe
+              src={import.meta.env.VITE_NORHAN_URL || "http://localhost:8888/"}
               style={{ width: '100%', height: '100vh', border: 'none' }}
               title="Norhan Therapy App"
             />
-          } 
+          }
         />
 
         {/* Fallback */}
