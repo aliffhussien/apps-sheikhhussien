@@ -46,9 +46,19 @@ export const APPS: AppConfig[] = [
   }
 ]
 
+const getNorhanURL = () => {
+  if (import.meta.env.VITE_NORHAN_URL) {
+    return import.meta.env.VITE_NORHAN_URL
+  }
+  if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+    return 'http://localhost:8888'
+  }
+  return 'https://norhan.sheikhhussien.com'
+}
+
 export const API_ENDPOINTS = {
   norhan: {
-    base: 'http://localhost:8888',
+    base: getNorhanURL(),
     tts: '/api/tts',
     log: '/api/log',
     stats: '/api/stats'

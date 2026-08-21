@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import Landing from './pages/Landing'
+import { API_ENDPOINTS } from './config/apps'
 
 export default function App() {
   return (
@@ -14,7 +15,7 @@ export default function App() {
           path="/norhan/*"
           element={
             <iframe
-              src={import.meta.env.VITE_NORHAN_URL || "http://localhost:8888/"}
+              src={`${API_ENDPOINTS.norhan.base}/`}
               style={{ width: '100%', height: '100vh', border: 'none' }}
               title="Norhan Therapy App"
             />
