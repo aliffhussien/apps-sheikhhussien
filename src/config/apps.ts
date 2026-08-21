@@ -50,10 +50,8 @@ const getNorhanURL = () => {
   if (import.meta.env.VITE_NORHAN_URL) {
     return import.meta.env.VITE_NORHAN_URL
   }
-  if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
-    return 'http://localhost:8888'
-  }
-  return 'https://norhan.sheikhhussien.com'
+  // Default to local for now - use Cloudflare Tunnel to expose publicly
+  return 'http://localhost:8888'
 }
 
 export const API_ENDPOINTS = {
