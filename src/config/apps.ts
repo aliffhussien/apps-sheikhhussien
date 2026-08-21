@@ -50,7 +50,11 @@ const getNorhanURL = () => {
   if (import.meta.env.VITE_NORHAN_URL) {
     return import.meta.env.VITE_NORHAN_URL
   }
-  // Default to local for now - use Cloudflare Tunnel to expose publicly
+  // Production: Cloudflare Tunnel
+  if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
+    return 'https://61be13ad-7d10-4541-b770-a42e4284694d.cfargotunnel.com'
+  }
+  // Development: Local server
   return 'http://localhost:8888'
 }
 
