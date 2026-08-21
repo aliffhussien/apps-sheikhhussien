@@ -1,0 +1,20 @@
+name = "apps-sheikhhussien"
+type = "javascript"
+account_id = "YOUR_CLOUDFLARE_ACCOUNT_ID"
+workers_dev = true
+
+route = "apps.sheikhhussien.com/*"
+zone_id = "YOUR_CLOUDFLARE_ZONE_ID"
+
+[env.production]
+name = "apps-sheikhhussien-prod"
+route = "apps.sheikhhussien.com/*"
+
+[build]
+command = "npm run build"
+cwd = "./"
+watch_paths = ["src/**/*.ts", "src/**/*.tsx"]
+
+[build.upload]
+format = "modules"
+main = "./dist/index.js"

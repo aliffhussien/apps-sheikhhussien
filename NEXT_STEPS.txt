@@ -1,0 +1,56 @@
+🚀 NEXT STEPS - Deploy apps.sheikhhussien.com
+
+STEP 1: Install Dependencies
+  cd /home/aliffhussien/01_workspaces/apps-sheikhhussien
+  npm install
+
+STEP 2: Verify Locally
+  npm run dev
+  → Opens http://localhost:3000
+  → Click "Norhan Therapy" → Should load Norhan app from http://localhost:8888
+
+STEP 3: Build for Production
+  npm run build
+  → Creates dist/ folder
+
+STEP 4: Deploy to Vercel (Easiest)
+  npm install -g vercel
+  vercel --prod
+  → Follow prompts
+  → Framework: Vite
+  → Build: npm run build
+  → Output: dist
+
+STEP 5: Configure DNS (Cloudflare)
+  In Cloudflare dashboard:
+  Add CNAME record:
+    Name: apps
+    Content: [vercel-deployment].vercel.app
+    TTL: Auto
+    Proxy: Proxied
+
+STEP 6: Test Production
+  Visit: https://apps.sheikhhussien.com
+  ✓ Landing page loads (glassmorphic cards)
+  ✓ Click Norhan → app loads
+  ✓ Check console for errors
+
+OPTIONAL: Deploy to Cloudflare Workers
+  wrangler login
+  Update wrangler.toml with your IDs
+  wrangler publish
+
+IMPORTANT:
+  • Norhan server must be running at http://localhost:8888
+  • Or update iframe URL in src/App.tsx for production
+  • Update .env.local with API endpoints
+
+MONITORING:
+  • Vercel Dashboard → Analytics
+  • Cloudflare Dashboard → Traffic
+  • Check /tmp/norhan_v6_prod.log for errors
+
+SUPPORT:
+  • See README.md for full docs
+  • See DEPLOYMENT.md for detailed guide
+  • Check browser console (F12) for errors
